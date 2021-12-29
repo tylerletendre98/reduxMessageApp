@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import message, { createMessage } from "../features/message";
+import { createMessage } from "../features/message";
 
 function CreateNewMessage() {
   const [text, setText] = useState("");
@@ -22,7 +22,7 @@ function CreateNewMessage() {
     };
     dispatch(createMessage(newMessage));
     text = "";
-    message = "";
+    sender = "";
   };
 
   return (

@@ -5,10 +5,12 @@ import App from './App';
 import {Provider} from "react-redux"
 import {configureStore} from '@reduxjs/toolkit'
 import messageReducer from './features/message'
+import userReducer from './features/user'
 
 const store = configureStore({
     reducer:{
-      message:messageReducer
+      message:messageReducer,
+      user:userReducer
     }
 })
 
