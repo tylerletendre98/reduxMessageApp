@@ -18,7 +18,7 @@ const messageSlice = createSlice({
     initialState:{value:{initialStateValue}},
     reducers:{
         createMessage:(state,action)=>{
-            state.value.push(action.payload)
+            state.value.initialStateValue.messages.push(action.payload)
         }
     }
 })
