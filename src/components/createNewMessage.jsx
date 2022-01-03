@@ -21,8 +21,8 @@ function CreateNewMessage() {
       message: text,
     };
     dispatch(createMessage(newMessage));
-    text = "";
-    sender = "";
+    setSender("");
+    setText("");
   };
 
   return (

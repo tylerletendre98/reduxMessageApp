@@ -3,19 +3,19 @@ import {createSlice} from '@reduxjs/toolkit'
 const initialStateValue = {
     name:'',
     email:'',
-    age:'',
     loggedIn: false
 }
 
 const userSlice = createSlice({
     name:'user',
-    initialStateValue:{value:{initialStateValue}},
+    initialState:{value:{name:'',email:'',loggedIn:false}},
     reducers:{
         login:(state,action)=>{
             state.value = action.payload
+            console.log(state.value)
         },
-        logout:(state,action)=>{
-            state.value = initialStateValue
+        logout:(state)=>{
+            state.value = {name:'',email:'',loggedIn:false}
         }
     }
 })
