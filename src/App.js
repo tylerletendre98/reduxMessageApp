@@ -4,6 +4,7 @@ import CreateNewMessage from "./components/createNewMessage";
 import Login from "./components/Login";
 import DisplayUser from "./components/DisplayUser";
 import { useSelector } from "react-redux";
+import LogoutButton from "./components/logoutButton";
 function App() {
   const user = useSelector((state) => state.user.value);
 
@@ -11,8 +12,6 @@ function App() {
     return (
       <div className="App">
         <Login />
-        <DisplayMessage />
-        <CreateNewMessage />
       </div>
     );
   } else {
@@ -22,6 +21,7 @@ function App() {
         <DisplayUser />
         <DisplayMessage />
         <CreateNewMessage />
+        <LogoutButton />
       </div>
     );
   }
