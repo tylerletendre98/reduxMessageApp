@@ -12,7 +12,6 @@ const userSlice = createSlice({
             state.value.users.push(action.payload)
             state.value.currentLoggedInUser =action.payload
         },
-
         login:(state,action)=>{
             state.value.currentLoggedInUser= action.payload
         },

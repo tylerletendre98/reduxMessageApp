@@ -11,6 +11,8 @@ function App() {
     (state) => state.user.value.currentLoggedInUser
   );
   const users = useSelector((state) => state.user.value.users);
+  console.log(users);
+  console.log(currentUser);
 
   if (users.length === 0 || currentUser.loggedIn === undefined) {
     return (

@@ -41,7 +41,7 @@ function CreateNewUser() {
         />
       </div>
       <div>
-        <label>Enter password:</label>
+        <label>Enter password: </label>
         <input
           type="password"
           name=""
@@ -51,7 +51,7 @@ function CreateNewUser() {
         />
       </div>
       <div>
-        <label>Enter your name:</label>
+        <label>Enter your name: </label>
         <input
           type="text"
           name=""

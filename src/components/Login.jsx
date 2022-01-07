@@ -1,29 +1,42 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../features/user";
 
 function Login() {
-  const [email, setEmail] = useState("");
+  const users = useSelector((state) => state.user.value.users);
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
   };
 
-  // const handlePasswordChange = (e) => {
-  //   setName(e.target.value);
-  // };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
 
   const handleLogin = (e) => {
-    const newUser = {
+    const user = {
+      username: username,
       password: password,
-      email: email,
       loggedIn: true,
     };
-    // if (password === currentUserPassword) {
-    //   dispatch(login(newUser));
-    // }
+    for (let i = 0; i < users.length; i++) {
+      console.log(users[i].username);
+      if (
+        users[i].username === user.username &&
+        users[i].password === user.password
+      ) {
+        dispatch(login(user));
+      } else {
+        return (
+          <div>
+            <h1>incorrect username or password</h1>
+          </div>
+        );
+      }
+    }
   };
 
   return (
@@ -38,16 +51,20 @@ function Login() {
             <input
               type="text"
               placeholder="enter your username"
-              onChange={handleEmailChange}
-              value={email}
+              onChange={handleUsernameChange}
+              value={username}
             />
           </div>
           <div>
             <label htmlFor="">Password: </label>
-            <input type="password" placeholder="enter your password" />
+            <input
+              type="password"
+              placeholder="enter your password"
+              onChange={handlePasswordChange}
+            />
           </div>
           <div>
-            <button onClick={() => handleLogin()}>Login</button>
+            <button onClick={handleLogin}>Login</button>
           </div>
         </div>
       </div>
