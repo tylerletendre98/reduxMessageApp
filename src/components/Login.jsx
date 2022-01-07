@@ -4,24 +4,26 @@ import { login } from "../features/user";
 
 function Login() {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
+  // const handlePasswordChange = (e) => {
+  //   setName(e.target.value);
+  // };
 
   const handleLogin = (e) => {
     const newUser = {
-      name: name,
+      password: password,
       email: email,
       loggedIn: true,
     };
-    dispatch(login(newUser));
+    // if (password === currentUserPassword) {
+    //   dispatch(login(newUser));
+    // }
   };
 
   return (
@@ -41,13 +43,8 @@ function Login() {
             />
           </div>
           <div>
-            <label htmlFor="">Name: </label>
-            <input
-              type="text"
-              placeholder="enter your name"
-              onChange={handleNameChange}
-              value={name}
-            />
+            <label htmlFor="">Password: </label>
+            <input type="password" placeholder="enter your password" />
           </div>
           <div>
             <button onClick={() => handleLogin()}>Login</button>

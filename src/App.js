@@ -5,13 +5,22 @@ import Login from "./components/Login";
 import DisplayUser from "./components/DisplayUser";
 import { useSelector } from "react-redux";
 import LogoutButton from "./components/logoutButton";
+import CreateNewUser from "./components/CreateNewUser";
 function App() {
   const user = useSelector((state) => state.user.value);
 
-  if (user.loggedIn === false) {
+  if (user.users.length === 0) {
     return (
       <div className="App">
-        <Login />
+        <div>
+          <Login />
+        </div>
+        <div>
+          <p>or</p>
+        </div>
+        <div>
+          <CreateNewUser />
+        </div>
       </div>
     );
   } else {
