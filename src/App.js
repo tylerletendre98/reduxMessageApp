@@ -7,9 +7,13 @@ import { useSelector } from "react-redux";
 import LogoutButton from "./components/logoutButton";
 import CreateNewUser from "./components/CreateNewUser";
 function App() {
-  const user = useSelector((state) => state.user.value);
+  const currentUser = useSelector(
+    (state) => state.user.value.currentLoggedInUser
+  );
+  const users = useSelector((state) => state.user.value.users);
 
-  if (user.users.length === 0) {
+  if (users.length === 0 || currentUser.loggedIn === undefined) {
+    console.log(currentUser);
     return (
       <div className="App">
         <div>
@@ -24,7 +28,6 @@ function App() {
       </div>
     );
   } else {
-    console.log(user.initialStateValue);
     return (
       <div className="App">
         <DisplayUser />

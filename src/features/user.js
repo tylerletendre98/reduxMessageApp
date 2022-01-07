@@ -10,6 +10,7 @@ const userSlice = createSlice({
     reducers:{
         createNewUser:(state,action)=>{
             state.value.users.push(action.payload)
+            state.value.currentLoggedInUser =action.payload
         },
 
         login:(state,action)=>{
