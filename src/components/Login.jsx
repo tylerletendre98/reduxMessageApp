@@ -34,10 +34,10 @@ function Login() {
         </div>
         <div>
           <div>
-            <label htmlFor="">Email: </label>
+            <label htmlFor="">Username: </label>
             <input
               type="text"
-              placeholder="enter email"
+              placeholder="enter your username"
               onChange={handleEmailChange}
               value={email}
             />

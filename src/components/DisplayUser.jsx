@@ -2,14 +2,15 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 function DisplayUser() {
-  const user = useSelector((state) => state.user.value);
-  console.log(user);
+  const currentLoggedInUser = useSelector(
+    (state) => state.user.value.currentLoggedInUser
+  );
 
   return (
     <div>
       <div>
-        <h3>{user.email}</h3>
-        <h3>{user.name}</h3>
+        <h3>{currentLoggedInUser.username}</h3>
+        <h3>{currentLoggedInUser.fullName}</h3>
       </div>
     </div>
   );

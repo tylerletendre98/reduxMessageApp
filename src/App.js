@@ -13,7 +13,6 @@ function App() {
   const users = useSelector((state) => state.user.value.users);
 
   if (users.length === 0 || currentUser.loggedIn === undefined) {
-    console.log(currentUser);
     return (
       <div className="App">
         <div>

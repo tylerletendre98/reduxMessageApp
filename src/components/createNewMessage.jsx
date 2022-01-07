@@ -1,39 +1,31 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { createMessage } from "../features/message";
 
 function CreateNewMessage() {
+  const currentLoggedInUser = useSelector(
+    (state) => state.user.value.currentLoggedInUser
+  );
   const [text, setText] = useState("");
-  const [sender, setSender] = useState("");
 
   const dispatch = useDispatch();
 
   const handleTextChange = (e) => {
     setText(e.target.value);
   };
-
-  const handleSenderChange = (e) => {
-    setSender(e.target.value);
-  };
   const handleSubmit = (e) => {
     const newMessage = {
-      user: sender,
+      user: currentLoggedInUser.username,
       message: text,
     };
     dispatch(createMessage(newMessage));
-    setSender("");
     setText("");
   };
 
   return (
     <div>
       <div>
-        <input
-          type="text"
-          value={sender}
-          placeholder="Who is sending message?"
-          onChange={handleSenderChange}
-        />
         <input
           type="textarea"
           placeholder="Please enter a message"
