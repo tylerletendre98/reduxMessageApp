@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createNewUser } from "../features/user";
+import "./createNewUser.css";
 
 function CreateNewUser() {
   const dispatch = useDispatch();
@@ -31,37 +32,43 @@ function CreateNewUser() {
   };
   return (
     <div>
-      <div>
-        <label>Enter username:</label>
-        <input
-          type="text"
-          placeholder="Enter a username"
-          value={username}
-          onChange={handleUserNameChange}
-        />
-      </div>
-      <div>
-        <label>Enter password: </label>
-        <input
-          type="password"
-          name=""
-          placeholder="Enter a password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-      </div>
-      <div>
-        <label>Enter your name: </label>
-        <input
-          type="text"
-          name=""
-          placeholder="Enter your Full name"
-          value={fullName}
-          onChange={handleFullNameChange}
-        />
-      </div>
-      <div>
-        <button onClick={handleNewUser}>Create new user</button>
+      <div className="create-user">
+        <div className="create-user-inputs">
+          <div className="create-user-input">
+            <div>
+              <label>Enter username: </label>
+              <input
+                type="text"
+                placeholder="Enter a username"
+                value={username}
+                onChange={handleUserNameChange}
+              />
+            </div>
+            <div>
+              <label>Enter password: </label>
+              <input
+                type="password"
+                name=""
+                placeholder="Enter a password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+            </div>
+            <div>
+              <label>Enter your name: </label>
+              <input
+                type="text"
+                name=""
+                placeholder="Enter your Full name"
+                value={fullName}
+                onChange={handleFullNameChange}
+              />
+            </div>
+            <div>
+              <button onClick={handleNewUser}>Create new user</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

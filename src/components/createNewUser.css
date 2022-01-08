@@ -1,0 +1,32 @@
+.create-user {
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+  padding: 5px;
+  width: 25%;
+  position: relative;
+  left: 37%;
+  border-radius: 5px;
+  background-color: lightsteelblue;
+}
+
+.create-user-inputs {
+  padding-bottom: 15px;
+  padding-top: 10px;
+}
+
+.create-user-inputs input {
+  border-radius: 3.5px;
+  margin-bottom: 3.5px;
+}
+
+.create-user-input {
+  padding-bottom: 10px;
+  color: darkred;
+}
+
+.create-user-input button {
+  color: darkred;
+  border-radius: 3.5px;
+  margin-top: 10px;
+}
