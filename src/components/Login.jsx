@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../features/user";
+import "./login.css";
 
 function Login() {
   const users = useSelector((state) => state.user.value.users);
@@ -29,12 +30,11 @@ function Login() {
         users[i].password === user.password
       ) {
         dispatch(login(user));
-      } else {
-        return (
-          <div>
-            <h1>incorrect username or password</h1>
-          </div>
-        );
+      } else if (
+        users[i].username === user.username &&
+        users[i].password === user.password
+      ) {
+        return alert("incorrect username or password");
       }
     }
   };
@@ -45,26 +45,32 @@ function Login() {
         <div>
           <h3>Please Log in</h3>
         </div>
-        <div>
-          <div>
-            <label htmlFor="">Username: </label>
-            <input
-              type="text"
-              placeholder="enter your username"
-              onChange={handleUsernameChange}
-              value={username}
-            />
-          </div>
-          <div>
-            <label htmlFor="">Password: </label>
-            <input
-              type="password"
-              placeholder="enter your password"
-              onChange={handlePasswordChange}
-            />
-          </div>
-          <div>
-            <button onClick={handleLogin}>Login</button>
+        <div className="login">
+          <div className="login-container">
+            <div className="login-inputs">
+              <div className="login-input">
+                <label htmlFor="">Username: </label>
+                <input
+                  type="text"
+                  placeholder="enter your username"
+                  onChange={handleUsernameChange}
+                  value={username}
+                />
+              </div>
+              <div className="login-input">
+                <label htmlFor="">Password: </label>
+                <input
+                  type="password"
+                  placeholder="enter your password"
+                  onChange={handlePasswordChange}
+                />
+              </div>
+            </div>
+            <div className="login-button">
+              <div>
+                <button onClick={handleLogin}>Login</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

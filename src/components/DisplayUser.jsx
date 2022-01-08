@@ -10,7 +10,7 @@ function DisplayUser() {
     <div>
       <div>
         <h3>{currentLoggedInUser.username}</h3>
-        <h3>{currentLoggedInUser.fullName}</h3>
+        <h3>{currentLoggedInUser.fullname}</h3>
       </div>
     </div>
   );

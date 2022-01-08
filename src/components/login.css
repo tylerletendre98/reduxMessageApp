@@ -1,0 +1,33 @@
+.login-container {
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+  padding: 5px;
+  width: 25%;
+  position: relative;
+  left: 37%;
+  border-radius: 5px;
+  background-color: lightsteelblue;
+}
+
+.login-inputs {
+  padding-bottom: 15px;
+  padding-top: 10px;
+}
+.login-inputs input {
+  border-radius: 3.5px;
+}
+
+.login-input {
+  padding-bottom: 5px;
+  color: darkred;
+}
+
+.login-button {
+  padding-bottom: 5px;
+}
+
+.login-button button {
+  color: darkred;
+  border-radius: 3.5px;
+}
