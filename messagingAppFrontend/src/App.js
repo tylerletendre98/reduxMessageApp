@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import LogoutButton from "./components/logoutButton";
 import CreateNewUser from "./components/CreateNewUser";
 function App() {
+  //this brings in current user out of store
   const currentUser = useSelector(
     (state) => state.user.value.currentLoggedInUser
   );
@@ -21,7 +22,7 @@ function App() {
           <Login />
         </div>
         <div>
-          <p>or</p>
+          <p>If you dont have a account create one below</p>
         </div>
         <div>
           <CreateNewUser />
