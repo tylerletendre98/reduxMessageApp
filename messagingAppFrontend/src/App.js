@@ -6,14 +6,25 @@ import DisplayUser from "./components/DisplayUser";
 import { useSelector } from "react-redux";
 import LogoutButton from "./components/logoutButton";
 import CreateNewUser from "./components/CreateNewUser";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getUsers } from "./features/user";
+
 function App() {
   //this brings in current user out of store
+  const dispatch = useDispatch();
   const currentUser = useSelector(
     (state) => state.user.value.currentLoggedInUser
   );
+  
+  console.log(currentUser);
   const users = useSelector((state) => state.user.value.users);
   console.log(users);
-  console.log(currentUser);
+  
+  useEffect(()=>{
+    dispatch(getUsers()) 
+    console.log(users)
+  },[])
 
   if ( currentUser.loggedIn === undefined) {
     return (

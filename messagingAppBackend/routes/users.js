@@ -28,6 +28,15 @@ router.get('/users',async(req,res)=>{
     }
 });
 
+router.get('/user/:userId',async(req,res)=>{
+    try{
+        const user = await User.findById(req.params.userId)
+        res.send(user)
+    }catch(ex){
+        res.status(500).send(`Internal Server Error: ${ex}`);
+    }
+})
+
 router.post('/newMessage/:userId',async(req,res)=>{
     try{
         const user = await User.findById(req.params.userId)
