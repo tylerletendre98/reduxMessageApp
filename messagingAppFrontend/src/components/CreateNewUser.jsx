@@ -8,6 +8,7 @@ function CreateNewUser() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleUserNameChange = (e) => {
     setUsername(e.target.value);
@@ -20,12 +21,16 @@ function CreateNewUser() {
   const handleFullNameChange = (e) => {
     setFullName(e.target.value);
   };
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
 
   const handleNewUser = (e) => {
     const newUser = {
       username: username,
       password: password,
-      fullName: fullName,
+      fullname: fullName,
+      email: email,
       loggedIn: true,
     };
     dispatch(createNewUser(newUser));
@@ -62,6 +67,16 @@ function CreateNewUser() {
                 placeholder="Enter your Full name"
                 value={fullName}
                 onChange={handleFullNameChange}
+              />
+            </div>
+            <div>
+              <label>Enter your email: </label>
+              <input
+                type="text"
+                name=""
+                placeholder="Enter your email"
+                value={email}
+                onChange={handleEmailChange}
               />
             </div>
             <div>

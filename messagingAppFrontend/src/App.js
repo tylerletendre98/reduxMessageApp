@@ -15,7 +15,7 @@ function App() {
   console.log(users);
   console.log(currentUser);
 
-  if (users.length === 0 || currentUser.loggedIn === undefined) {
+  if ( currentUser.loggedIn === undefined) {
     return (
       <div className="App">
         <div>

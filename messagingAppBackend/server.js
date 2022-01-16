@@ -1,7 +1,6 @@
 const connectDB = require('./startup/db')
 const express = require('express')
 const cors = require('cors')
-const messages = require('./routes/messages');
 const users = require('./routes/users')
 const app = express()
 

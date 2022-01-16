@@ -1,21 +1,20 @@
 import {createSlice} from '@reduxjs/toolkit'
+import axios from 'axios'
 
 
 const userSlice = createSlice({
     name:'user',
     initialState:{value:{
-        users:[{
-            username:'bubba1029',
-            password:'bubba',
-            fullname:'bubba letendre'
-        }
-    ],
         currentLoggedInUser:{}
     }},
     reducers:{
         createNewUser:(state,action)=>{
-            state.value.users.push(action.payload)
-            state.value.currentLoggedInUser =action.payload
+            let newUser = action.payload
+            axios.post('http://localhost:5000/api/users/newUser',newUser)
+            .then(res =>{
+                console.log(res)
+            })
+            
         },
         login:(state,action)=>{
             state.value.currentLoggedInUser= action.payload
