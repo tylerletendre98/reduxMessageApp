@@ -1,4 +1,5 @@
 const User = require("../models/user")
+const Message = require('../models/message')
 const express = require('express');
 const router = express.Router();
 
@@ -26,5 +27,21 @@ router.get('/users',async(req,res)=>{
         res.status(500).send(`Internal Server Error: ${ex}`);
     }
 });
+
+router.post('/newMessage/:userId',async(req,res)=>{
+    try{
+        const user = await User.findById(req.params.userId)
+        const newMessage = new Message({
+            sender: user.username,
+            text:req.body.text 
+        })
+        newMessage.save()
+        user.messages.push(newMessage)
+        user.save();
+        return res.send(user)
+    }catch(ex){
+        res.status(500).send(`Internal Server Error: ${ex}`);
+    }
+})
 
 module.exports = router;
