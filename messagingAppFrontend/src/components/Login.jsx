@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../features/user";
 import "./login.css";
 
 function Login() {
-  const users = useSelector((state) => state.user.value.users);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -21,22 +20,8 @@ function Login() {
     const user = {
       username: username,
       password: password,
-      loggedIn: true,
     };
-    for (let i = 0; i < users.length; i++) {
-      console.log(users[i].username);
-      if (
-        users[i].username === user.username &&
-        users[i].password === user.password
-      ) {
-        dispatch(login(user));
-      } else if (
-        users[i].username === user.username &&
-        users[i].password === user.password
-      ) {
-        return alert("incorrect username or password");
-      }
-    }
+    dispatch(login(user));
   };
 
   return (

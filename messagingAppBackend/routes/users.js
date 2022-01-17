@@ -28,6 +28,16 @@ router.get('/users',async(req,res)=>{
     }
 });
 
+router.get('/login',async(req,res)=>{
+    try{
+        console.log(req.body)
+        const user = await User.findOne({username:req.body.username,password:req.body.password})
+        res.send(user)
+    }catch(ex){
+        res.status(500).send(`Internal Server Error: ${ex}`);
+    }
+})
+
 router.get('/user/:userId',async(req,res)=>{
     try{
         const user = await User.findById(req.params.userId)

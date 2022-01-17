@@ -15,15 +15,17 @@ const userSlice = createSlice({
             state.value.currentLoggedInUser = newUser
         },
         getUsers:(state,action)=>{
-            let users
             axios.get('http://localhost:5000/api/users/users')
             .then((res)=>{
                 console.log(res.data)
-                users = res.data
             })
         },
         login:(state,action)=>{
-
+            console.log(action.payload)
+            axios.get('http://localhost:5000/api/users/login', action.payload)
+            .then((res)=>{
+                console.log(res.data)
+            })
         },
         logout:(state)=>{
             state.value.currentLoggedInUser={}
