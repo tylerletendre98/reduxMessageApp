@@ -9,6 +9,8 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/api/users',users)
+// app.use('/api/messages', messages)
+
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, ()=>{

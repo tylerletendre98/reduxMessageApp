@@ -1,24 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const initialStateValue = {
-   messages:[
-       {
-           user:'tyler',
-           message:'hello world'
-       },
-       {
-           user:'jackson',
-           message:'hello world'
-       }
-   ]
+   messages:[]
 }
+
 
 const messageSlice = createSlice({
     name:'message',
     initialState:{value:{initialStateValue}},
     reducers:{
         createMessage:(state,action)=>{
-            state.value.initialStateValue.messages.push(action.payload)
+            axios.post(`http://localhost:5000/api/users/sendMessage`,action.payload)
+            .then((res)=>{
+                console.log(res.data)
+            })
         }
     }
 })

@@ -16,8 +16,8 @@ function CreateNewMessage() {
   };
   const handleSubmit = (e) => {
     const newMessage = {
-      user: currentLoggedInUser.username,
-      message: text,
+      sender: currentLoggedInUser.username,
+      text: text,
     };
     dispatch(createMessage(newMessage));
     setText("");

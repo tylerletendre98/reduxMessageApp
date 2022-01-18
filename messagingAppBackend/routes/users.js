@@ -46,20 +46,20 @@ router.get('/user/:userId',async(req,res)=>{
     }
 })
 
-router.post('/newMessage/:userId',async(req,res)=>{
+router.post('/sendMessage', async (req,res)=>{
     try{
-        const user = await User.findById(req.params.userId)
+        const sender = await User.findOne({username:req.body.sender})
         const newMessage = new Message({
-            sender: user.username,
-            text:req.body.text 
+            sender:sender.username,
+            text:req.body.text
         })
-        newMessage.save()
-        user.messages.push(newMessage)
-        user.save();
-        return res.send(user)
-    }catch(ex){
-        res.status(500).send(`Internal Server Error: ${ex}`);
+        sender.messages.push(newMessage)
+        sender.save()
+        return res.send(sender)
     }
+        catch(ex){
+            return res.status(500).send(`Internal server Error:${ex}.`)
+        }
 })
 
 module.exports = router;
