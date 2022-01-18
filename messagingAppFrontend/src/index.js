@@ -6,6 +6,7 @@ import {Provider} from "react-redux"
 import {configureStore} from '@reduxjs/toolkit'
 import messageReducer from './features/message'
 import userReducer from './features/user'
+import { BrowserRouter } from 'react-router-dom';
 
 const store = configureStore({
     reducer:{
@@ -16,9 +17,11 @@ const store = configureStore({
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

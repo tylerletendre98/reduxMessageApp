@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { createNewUser } from "../features/user";
+import { Link } from "react-router-dom";
 import "./createNewUser.css";
 
 function CreateNewUser() {
@@ -84,7 +85,9 @@ function CreateNewUser() {
               />
             </div>
             <div>
-              <button onClick={handleNewUser}>Create new user</button>
+              <Link to="/messagePage">
+                <button onClick={handleNewUser}>Create new user</button>
+              </Link>
             </div>
           </div>
         </div>

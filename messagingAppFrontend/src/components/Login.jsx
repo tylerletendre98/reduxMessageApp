@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../features/user";
 import axios from "axios";
 import "./login.css";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -57,7 +58,9 @@ function Login() {
             </div>
             <div className="login-button">
               <div>
-                <button onClick={handleLogin}>Login</button>
+                <Link to='/messagePage'>
+                  <button onClick={handleLogin}>Login</button>
+                </Link>
               </div>
             </div>
           </div>

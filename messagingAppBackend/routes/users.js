@@ -30,7 +30,6 @@ router.get('/users',async(req,res)=>{
 
 router.post('/login',async(req,res)=>{
     try{
-        console.log(req.body)
         const user = await User.findOne({username:req.body.username,password:req.body.password})
         res.send(user)
     }catch(ex){

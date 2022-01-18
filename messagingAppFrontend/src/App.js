@@ -6,9 +6,10 @@ import DisplayUser from "./components/DisplayUser";
 import { useSelector } from "react-redux";
 import LogoutButton from "./components/logoutButton";
 import CreateNewUser from "./components/CreateNewUser";
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getUsers } from "./features/user";
+import { Route, Routes } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import MessagingPage from "./pages/MessagingPage";
 
 function App() {
   //this brings in current user out of store
@@ -19,31 +20,38 @@ function App() {
   console.log(currentUser)
   
   
-
-  if ( currentUser.loggedIn === undefined) {
-    return (
-      <div className="App">
-        <div>
-          <Login />
-        </div>
-        <div>
-          <p>If you dont have a account create one below</p>
-        </div>
-        <div>
-          <CreateNewUser />
-        </div>
-      </div>
-    );
-  } else if(currentUser !== undefined) {
-    return (
-      <div className="App">
-        <DisplayUser />
-        <DisplayMessage />
-        <CreateNewMessage />
-        <LogoutButton />
-      </div>
-    );
-  }
+  return(
+    <div>
+      <Routes>
+        <Route path='/' element={<LoginPage/>}/>
+        <Route path="/messagePage" element={<MessagingPage/>}/>
+      </Routes>
+    </div>
+  )
+  // if ( currentUser.loggedIn === undefined) {
+  //   return (
+  //     <div className="App">
+  //       <div>
+  //         <Login />
+  //       </div>
+  //       <div>
+  //         <p>If you dont have a account create one below</p>
+  //       </div>
+  //       <div>
+  //         <CreateNewUser />
+  //       </div>
+  //     </div>
+  //   );
+  // } else if(currentUser !== undefined) {
+  //   return (
+  //     <div className="App">
+  //       <DisplayUser />
+  //       <DisplayMessage />
+  //       <CreateNewMessage />
+  //       <LogoutButton />
+  //     </div>
+  //   );
+  // }
 }
 
 export default App;
