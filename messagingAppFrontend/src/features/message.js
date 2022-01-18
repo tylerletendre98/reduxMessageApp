@@ -2,9 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialStateValue = {
-   messages:[]
+   messages:undefined
 }
-
 
 const messageSlice = createSlice({
     name:'message',
@@ -15,9 +14,12 @@ const messageSlice = createSlice({
             .then((res)=>{
                 console.log(res.data)
             })
-        }
+        },
+        getMessages:(state,action)=>{
+            state.value.initialStateValue.messages = action.payload
+        }   
     }
 })
 
-export const {createMessage} = messageSlice.actions
+export const {createMessage,getMessages} = messageSlice.actions
 export default messageSlice.reducer;

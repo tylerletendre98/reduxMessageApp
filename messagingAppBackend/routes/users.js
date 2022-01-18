@@ -62,4 +62,19 @@ router.post('/sendMessage', async (req,res)=>{
         }
 })
 
+router.get('/getMessages', async(req,res)=>{
+    try{
+        const users = await User.find()
+        const messages = []
+        for (let index = 0; index < users.length; index++) {
+            for (let x = 0; x < users[index].messages.length; x++) {
+                messages.push(users[index].messages[x])
+            }
+        }
+        return res.send(messages)
+    }catch(ex){
+        return res.status(500).send(`Internal server Error:${ex}.`)
+    }
+})
+
 module.exports = router;
