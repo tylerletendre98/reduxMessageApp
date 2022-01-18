@@ -16,15 +16,9 @@ function App() {
   const currentUser = useSelector(
     (state) => state.user.value.currentLoggedInUser
   );
+  console.log(currentUser)
   
-  console.log(currentUser);
-  const users = useSelector((state) => state.user.value.users);
-  console.log(users);
   
-  useEffect(()=>{
-    dispatch(getUsers()) 
-    console.log(users)
-  },[])
 
   if ( currentUser.loggedIn === undefined) {
     return (
@@ -40,7 +34,7 @@ function App() {
         </div>
       </div>
     );
-  } else {
+  } else if(currentUser !== undefined) {
     return (
       <div className="App">
         <DisplayUser />

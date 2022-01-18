@@ -10,9 +10,8 @@ const userSlice = createSlice({
     }},
     reducers:{
         createNewUser:(state,action)=>{
-            let newUser = action.payload
-            axios.post('http://localhost:5000/api/users/newUser',newUser)
-            state.value.currentLoggedInUser = newUser
+            state.value.currentLoggedInUser = action.payload
+            console.log(state.value.currentLoggedInUser)
         },
         getUsers:(state,action)=>{
             axios.get('http://localhost:5000/api/users/users')
@@ -21,11 +20,7 @@ const userSlice = createSlice({
             })
         },
         login:(state,action)=>{
-            console.log(action.payload)
-            axios.get('http://localhost:5000/api/users/login', action.payload)
-            .then((res)=>{
-                console.log(res.data)
-            })
+            state.value.currentLoggedInUser = action.payload
         },
         logout:(state)=>{
             state.value.currentLoggedInUser={}

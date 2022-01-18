@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../features/user";
+import axios from "axios";
 import "./login.css";
 
 function Login() {
@@ -21,7 +22,10 @@ function Login() {
       username: username,
       password: password,
     };
-    dispatch(login(user));
+    axios.post('http://localhost:5000/api/users/login',user )
+    .then((res)=>{
+      dispatch(login(res.data))
+    })
   };
 
   return (

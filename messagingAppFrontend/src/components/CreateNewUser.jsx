@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import axios from "axios";
 import { createNewUser } from "../features/user";
 import "./createNewUser.css";
 
@@ -33,7 +34,10 @@ function CreateNewUser() {
       email: email,
       loggedIn: true,
     };
-    dispatch(createNewUser(newUser));
+    axios.post('http://localhost:5000/api/users/newUser',newUser)
+    .then((res)=>{
+      dispatch(createNewUser(res.data))
+    })
   };
   return (
     <div>
